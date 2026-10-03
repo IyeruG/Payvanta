@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Payvanta</title>
+  <meta
+    name="description"
+    content="Simple and flexible work pay calculations."
+  >
+
+  <!-- Inter -->
+  <link
+    rel="stylesheet"
+    href="https://rsms.me/inter/inter.css"
+  >
+
+  <!-- Payvanta styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <main class="app">
+
+    <!-- Header -->
+    <header class="app-header">
+      <div class="brand">
+        <h1>PAYVANTA</h1>
+        <p>Work hours. Know your pay.</p>
+      </div>
+    </header>
+
+
+    <!-- Calculator Navigation -->
+    <nav class="mode-selector" aria-label="Calculator modes">
+
+      <button class="mode-button active" data-mode="pay">
+        Pay
+      </button>
+
+      <button class="mode-button" data-mode="overtime">
+        Overtime
+      </button>
+
+      <button class="mode-button" data-mode="hours">
+        Hours
+      </button>
+
+      <button class="mode-button" data-mode="weekly">
+        Weekly
+      </button>
+
+      <button class="mode-button" data-mode="biweekly">
+        Biweekly
+      </button>
+
+    </nav>
+
+
+    <!-- Calculator -->
+    <section class="calculator-card">
+
+      <!-- PAY -->
+      <div class="calculator-mode active" id="pay-mode">
+
+        <div class="mode-heading">
+          <h2>Regular Pay</h2>
+          <p>Calculate your earnings from hours worked.</p>
+        </div>
+
+        <div class="form-group">
+          <label for="pay-hourly-rate">Hourly Rate</label>
+
+          <div class="input-wrapper">
+            <span class="input-prefix">$</span>
+
+            <input
+              id="pay-hourly-rate"
+              type="number"
+              inputmode="decimal"
+              min="0"
+              step="0.01"
+              placeholder="18.50"
+            >
+
+            <span class="input-suffix">USD</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="pay-hours">Hours Worked</label>
+
+          <div class="input-wrapper">
+
+            <input
+              id="pay-hours"
+              type="number"
+              inputmode="decimal"
+              min="0"
+              step="0.01"
+              placeholder="40.00"
+            >
+
+            <span class="input-suffix">h</span>
+          </div>
+        </div>
+
+        <button class="calculate-button" type="button">
+          Calculate
+        </button>
+
+      </div>
+
+
+      <!-- OVERTIME -->
+      <div class="calculator-mode" id="overtime-mode">
+
+        <div class="mode-heading">
+          <h2>Overtime Pay</h2>
+          <p>Calculate regular and overtime earnings.</p>
+        </div>
+
+        <div class="form-group">
+          <label for="ot-hourly-rate">Hourly Rate</label>
+
+          <div class="input-wrapper">
+            <span class="input-prefix">$</span>
+
+            <input
+              id="ot-hourly-rate"
+              type="number"
+              inputmode="decimal"
+              min="0"
+              step="0.01"
+              placeholder="18.50"
+            >
+
+            <span class="input-suffix">USD</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="ot-regular-hours">Regular Hours</label>
+
+          <div class="input-wrapper">
+            <input
+              id="ot-regular-hours"
+              type="number"
+              inputmode="decimal"
+              min="0"
+              step="0.01"
+              placeholder="40.00"
+            >
+
+            <span class="input-suffix">h</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="ot-hours">Overtime Hours</label>
+
+          <div class="input-wrapper">
+            <input
+              id="ot-hours"
+              type="number"
+              inputmode="decimal"
+              min="0"
+              step="0.01"
+              placeholder="8.00"
+            >
+
+            <span class="input-suffix">h</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Overtime Rate</label>
+
+          <div class="rate-selector">
+            <button type="button" class="rate-option active">1.5×</button>
+            <button type="button" class="rate-option">2×</button>
+            <button type="button" class="rate-option">Custom</button>
+          </div>
+        </div>
+
+        <div class="form-group custom-rate hidden">
+          <label for="custom-multiplier">Custom Multiplier</label>
+
+          <div class="input-wrapper">
+            <input
+              id="custom-multiplier"
+              type="number"
+              inputmode="decimal"
+              min="0"
+              step="0.01"
+              placeholder="1.75"
+            >
+
+            <span class="input-suffix">×</span>
+          </div>
+        </div>
+
+        <button class="calculate-button" type="button">
+          Calculate
+        </button>
+
+      </div>
+
+
+      <!-- HOURS -->
+      <div class="calculator-mode" id="hours-mode">
+
+        <div class="mode-heading">
+          <h2>Hours Worked</h2>
+          <p>Calculate your total hours.</p>
+        </div>
+
+        <div class="form-group">
+          <label for="start-time">Start Time</label>
+
+          <div class="input-wrapper">
+            <input
+              id="start-time"
+              type="time"
+            >
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="end-time">End Time</label>
+
+          <div class="input-wrapper">
+            <input
+              id="end-time"
+              type="time"
+            >
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="break-hours">
+            Break <span>(optional)</span>
+          </label>
+
+          <div class="input-wrapper">
+            <input
+              id="break-hours"
+              type="number"
+              inputmode="decimal"
+              min="0"
+              step="0.01"
+              placeholder="1.00"
+            >
+
+            <span class="input-suffix">h</span>
+          </div>
+        </div>
+
+        <button class="calculate-button" type="button">
+          Calculate
+        </button>
+
+      </div>
+
+
+      <!-- WEEKLY -->
+      <div class="calculator-mode" id="weekly-mode">
+
+        <div class="mode-heading">
+          <h2>Weekly Pay</h2>
+          <p>Choose the way you want to calculate.</p>
+        </div>
+
+        <div class="calculation-type">
+          <button type="button" class="type-option active">
+            Quick
+          </button>
+
+          <button type="button" class="type-option">
+            By Day
+          </button>
+        </div>
+
+        <!-- Weekly Quick -->
+        <div class="weekly-quick">
+
+          <div class="form-group">
+            <label for="weekly-rate">Hourly Rate</label>
+
+            <div class="input-wrapper">
+              <span class="input-prefix">$</span>
+
+              <input
+                id="weekly-rate"
+                type="number"
+                inputmode="decimal"
+                min="0"
+                step="0.01"
+                placeholder="18.50"
+              >
+
+              <span class="input-suffix">USD</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="weekly-total-hours">Total Hours</label>
+
+            <div class="input-wrapper">
+              <input
+                id="weekly-total-hours"
+                type="number"
+                inputmode="decimal"
+                min="0"
+                step="0.01"
+                placeholder="40.00"
+              >
+
+              <span class="input-suffix">h</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="weekly-ot-hours">Overtime Hours</label>
+
+            <div class="input-wrapper">
+              <input
+                id="weekly-ot-hours"
+                type="number"
+                inputmode="decimal"
+                min="0"
+                step="0.01"
+                placeholder="0.00"
+              >
+
+              <span class="input-suffix">h</span>
+            </div>
+          </div>
+
+        </div>
+
+
+        <!-- Weekly By Day -->
+        <div class="weekly-by-day hidden">
+
+          <div class="day-row">
+            <span>Monday</span>
+            <input type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00">
+          </div>
+
+          <div class="day-row">
+            <span>Tuesday</span>
+            <input type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00">
+          </div>
+
+          <div class="day-row">
+            <span>Wednesday</span>
+            <input type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00">
+          </div>
+
+          <div class="day-row">
+            <span>Thursday</span>
+            <input type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00">
+          </div>
+
+          <div class="day-row">
+            <span>Friday</span>
+            <input type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00">
+          </div>
+
+          <div class="day-row">
+            <span>Saturday</span>
+            <input type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00">
+          </div>
+
+          <div class="day-row">
+            <span>Sunday</span>
+            <input type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00">
+          </div>
+
+        </div>
+
+        <div class="form-group">
+          <label for="weekly-ot-rate">Overtime Rate</label>
+
+          <div class="input-wrapper">
+            <input
+              id="weekly-ot-rate"
+              type="number"
+              inputmode="decimal"
+              min="0"
+              step="0.01"
+              value="1.5"
+            >
+
+            <span class="input-suffix">×</span>
+          </div>
+        </div>
+
+        <button class="calculate-button" type="button">
+          Calculate
+        </button>
+
+      </div>
+
+
+      <!-- BIWEEKLY -->
+      <div class="calculator-mode" id="biweekly-mode">
+
+        <div class="mode-heading">
+          <h2>Biweekly Pay</h2>
+          <p>Calculate your pay across two workweeks.</p>
+        </div>
+
+        <div class="calculation-type">
+          <button type="button" class="type-option active">
+            Quick
+          </button>
+
+          <button type="button" class="type-option">
+            By Day
+          </button>
+        </div>
+
+        <div class="form-group">
+          <label for="biweekly-rate">Hourly Rate</label>
+
+          <div class="input-wrapper">
+            <span class="input-prefix">$</span>
+
+            <input
+              id="biweekly-rate"
+              type="number"
+              inputmode="decimal"
+              min="0"
+              step="0.01"
+              placeholder="18.50"
+            >
+
+            <span class="input-suffix">USD</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="week-one-hours">Week 1 — Total Hours</label>
+
+          <div class="input-wrapper">
+            <input
+              id="week-one-hours"
+              type="number"
+              inputmode="decimal"
+              min="0"
+              step="0.01"
+              placeholder="40.00"
+            >
+
+            <span class="input-suffix">h</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="week-two-hours">Week 2 — Total Hours</label>
+
+          <div class="input-wrapper">
+            <input
+              id="week-two-hours"
+              type="number"
+              inputmode="decimal"
+              min="0"
+              step="0.01"
+              placeholder="40.00"
+            >
+
+            <span class="input-suffix">h</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="biweekly-ot-rate">Overtime Rate</label>
+
+          <div class="input-wrapper">
+            <input
+              id="biweekly-ot-rate"
+              type="number"
+              inputmode="decimal"
+              min="0"
+              step="0.01"
+              value="1.5"
+            >
+
+            <span class="input-suffix">×</span>
+          </div>
+        </div>
+
+        <button class="calculate-button" type="button">
+          Calculate
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- Result -->
+    <section class="result-card hidden" aria-live="polite">
+
+      <div class="result-heading">
+        <p>Your estimated pay</p>
+        <span class="result-type">Regular Pay</span>
+      </div>
+
+      <div class="result-total">
+        $0.00
+      </div>
+
+      <div class="result-details"></div>
+
+      <button class="edit-button" type="button">
+        Edit calculation
+      </button>
+
+    </section>
+
+
+    <!-- Currency note -->
+    <p class="currency-note">
+      More currencies coming soon.
+    </p>
+
+  </main>
+
+  <script src="script.js"></script>
+
+</body>
+  </html>
