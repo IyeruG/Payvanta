@@ -415,88 +415,81 @@
         </div>
 
         <div class="calculation-type">
-          <button type="button" class="type-option active">
-            Quick
-          </button>
-
-          <button type="button" class="type-option">
-            By Day
-          </button>
+          <button type="button" class="type-option active">Quick</button>
+          <button type="button" class="type-option">By Day</button>
         </div>
 
-        <div class="form-group">
-          <label for="biweekly-rate">Hourly Rate</label>
+        <div class="biweekly-quick">
 
-          <div class="input-wrapper">
-            <span class="input-prefix">$</span>
-
-            <input
-              id="biweekly-rate"
-              type="number"
-              inputmode="decimal"
-              min="0"
-              step="0.01"
-              placeholder="18.50"
-            >
-
-            <span class="input-suffix">USD</span>
+          <div class="form-group">
+            <label for="biweekly-rate">Hourly Rate</label>
+            <div class="input-wrapper">
+              <span class="input-prefix">$</span>
+              <input id="biweekly-rate" type="number" inputmode="decimal" min="0" step="0.01" placeholder="18.50">
+              <span class="input-suffix">USD</span>
+            </div>
           </div>
+
+          <div class="form-group">
+            <label for="week-one-hours">Week 1 — Total Hours</label>
+            <div class="input-wrapper">
+              <input id="week-one-hours" type="number" inputmode="decimal" min="0" step="0.01" placeholder="40.00">
+              <span class="input-suffix">h</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="week-one-ot-hours">Week 1 — Overtime Hours</label>
+            <div class="input-wrapper">
+              <input id="week-one-ot-hours" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00">
+              <span class="input-suffix">h</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="week-two-hours">Week 2 — Total Hours</label>
+            <div class="input-wrapper">
+              <input id="week-two-hours" type="number" inputmode="decimal" min="0" step="0.01" placeholder="40.00">
+              <span class="input-suffix">h</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="week-two-ot-hours">Week 2 — Overtime Hours</label>
+            <div class="input-wrapper">
+              <input id="week-two-ot-hours" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00">
+              <span class="input-suffix">h</span>
+            </div>
+          </div>
+
         </div>
 
-        <div class="form-group">
-          <label for="week-one-hours">Week 1 — Total Hours</label>
-
-          <div class="input-wrapper">
-            <input
-              id="week-one-hours"
-              type="number"
-              inputmode="decimal"
-              min="0"
-              step="0.01"
-              placeholder="40.00"
-            >
-
-            <span class="input-suffix">h</span>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="week-two-hours">Week 2 — Total Hours</label>
-
-          <div class="input-wrapper">
-            <input
-              id="week-two-hours"
-              type="number"
-              inputmode="decimal"
-              min="0"
-              step="0.01"
-              placeholder="40.00"
-            >
-
-            <span class="input-suffix">h</span>
-          </div>
+        <div class="biweekly-by-day hidden">
+          <div class="day-row"><span>Week 1 · Monday</span><input type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00"></div>
+          <div class="day-row"><span>Week 1 · Tuesday</span><input type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00"></div>
+          <div class="day-row"><span>Week 1 · Wednesday</span><input type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00"></div>
+          <div class="day-row"><span>Week 1 · Thursday</span><input type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00"></div>
+          <div class="day-row"><span>Week 1 · Friday</span><input type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00"></div>
+          <div class="day-row"><span>Week 1 · Saturday</span><input type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00"></div>
+          <div class="day-row"><span>Week 1 · Sunday</span><input type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00"></div>
+          <div class="day-row"><span>Week 2 · Monday</span><input type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00"></div>
+          <div class="day-row"><span>Week 2 · Tuesday</span><input type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00"></div>
+          <div class="day-row"><span>Week 2 · Wednesday</span><input type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00"></div>
+          <div class="day-row"><span>Week 2 · Thursday</span><input type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00"></div>
+          <div class="day-row"><span>Week 2 · Friday</span><input type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00"></div>
+          <div class="day-row"><span>Week 2 · Saturday</span><input type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00"></div>
+          <div class="day-row"><span>Week 2 · Sunday</span><input type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00"></div>
         </div>
 
         <div class="form-group">
           <label for="biweekly-ot-rate">Overtime Rate</label>
-
           <div class="input-wrapper">
-            <input
-              id="biweekly-ot-rate"
-              type="number"
-              inputmode="decimal"
-              min="0"
-              step="0.01"
-              value="1.5"
-            >
-
+            <input id="biweekly-ot-rate" type="number" inputmode="decimal" min="0" step="0.01" value="1.5">
             <span class="input-suffix">×</span>
           </div>
         </div>
 
-        <button class="calculate-button" type="button">
-          Calculate
-        </button>
+        <button class="calculate-button" type="button">Calculate</button>
 
       </div>
 
